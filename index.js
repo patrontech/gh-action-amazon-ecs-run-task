@@ -51,7 +51,7 @@ async function run() {
         // Get Inputs From Action.
         const capacityProviderStrategy = JSON.parse(core.getInput('capacity-provider-strategy', { required: false }));
         const cluster = core.getInput('cluster', { required: false });
-        const count = core.getInput('count', { required: false });
+        const count = parseInt(core.getInput('count', { required: false }));
         const enableECSManagedTags = core.getInput('enable-ecs-managed-tags', { required: false });
         const enableExecuteCommand = core.getInput('enable-execute-command', { required: false });
         const group = core.getInput('group', { required: false });
