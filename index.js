@@ -76,7 +76,7 @@ async function run() {
             taskDefinition: this.taskDefinition
         };
         core.debug(params.toString());
-        conole.log(params.toString());
+        console.log(params.toString());
         const result = runECSTask(client,params)
     }
     catch (error) {
