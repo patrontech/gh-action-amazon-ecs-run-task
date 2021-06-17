@@ -49,7 +49,7 @@ async function run() {
             }
         });
         // Get Inputs From Action.
-        const capacityProviderStrategy = JSON.parse(core.getInput('capacity-provider-strategy'), { required: false });
+        const capacityProviderStrategy = JSON.parse(core.getInput('capacity-provider-strategy', { required: false }));
         const cluster = core.getInput('cluster', { required: false });
         const count = core.getInput('count', { required: false });
         const enableECSManagedTags = core.getInput('enable-ecs-managed-tags', { required: false });
