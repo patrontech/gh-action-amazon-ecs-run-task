@@ -38,8 +38,7 @@ async function run() {
                 secretAccessKey: awsCredentials.secretAccessKey
             }
         });
-        // Get Inputs From ECS
-
+        // Get Inputs From Action.
         const capacityProviderStrategy = core.getInput('capacity-provider-strategy', { required: false });
         const cluster = core.getInput('cluster', { required: false });
         const count = core.getInput('count', { required: false });
@@ -47,8 +46,8 @@ async function run() {
         const enableExecuteCommand = core.getInput('enable-execute-command', { required: false });
         const group = core.getInput('group', { required: false });
         const launchType = core.getInput('launch-type', { required: false });
-        const networkConfiguration = core.getInput('network-configuration', { required: false });
-        const overrides = core.getInput('overrides', { required: false });
+        const networkConfiguration = JSON.parse(core.getInput('network-configuration', { required: false }));
+        const overrides = JSON.parse(core.getInput('overrides', { required: false }));
         const placementConstraints = core.getInput('placement-constraints', { required: false });
         const placementStrategy = core.getInput('placement-strategy', { required: false });
         const placementVersion = core.getInput('placement-version', { required: false });
