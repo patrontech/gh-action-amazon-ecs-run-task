@@ -63,7 +63,10 @@ function run() {
         const placementConstraints = JSON.parse(core.getInput('placement-constraints', { required: false }));
         const placementStrategy = JSON.parse(core.getInput('placement-strategy', { required: false }));
         const placementVersion = core.getInput('placement-version', { required: false });
-        const propagateTags = core.getInput('propagate-tags', { required: false });
+        let propagateTags = core.getInput('propagate-tags', { required: false });
+        if (propagateTags === ''){
+            propagateTags = null;
+        }
         const referenceId = core.getInput('reference-id', { required: false });
         const startedBy = core.getInput('started-by', { required: false });
         const tags = JSON.parse(core.getInput('tags', { required: false }));
@@ -82,7 +85,7 @@ function run() {
             placementConstraints: placementConstraints,
             placementStrategy: placementStrategy,
             platformVersion : platformVersion,
-            propagateTags: propagateTags,
+            ...!(propagateTags) && {propagateTags: propagateTags},
             referenceId: referenceId,
             startedBy: startedBy,
             tags: tags,
