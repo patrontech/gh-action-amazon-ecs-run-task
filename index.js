@@ -76,7 +76,7 @@ function run() {
             enableECSManagedTags: enableECSManagedTags,
             enableExecuteCommand: enableExecuteCommand,
             group: group,
-            launchType: launchType,
+            ...!(launchType) && {launchType: launchType},
             networkConfiguration: networkConfiguration,
             overrides: overrides,
             placementConstraints: placementConstraints,
