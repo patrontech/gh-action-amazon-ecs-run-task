@@ -56,7 +56,6 @@ async function run() {
         const startedBy = core.getInput('started-by', { required: false });
         const tags = core.getInput('tags', { required: false });
         const taskDefinition = core.getInput('task-definition', { required: true });
-
         const params = {
             capacityProviderStrategy: this.capacityProviderStrategy, // The name of the bucket. For example, 'sample_bucket_101'.
             cluster: this.cluster, // The name of the object. For example, 'sample_upload.txt'.
@@ -76,6 +75,7 @@ async function run() {
             tags: this.tags,
             taskDefinition: this.taskDefinition
         };
+        core.debug(params.toString());
         const result = runECSTask(client,params)
     }
     catch (error) {
