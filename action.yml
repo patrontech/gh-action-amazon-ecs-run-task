@@ -26,6 +26,7 @@ inputs:
   enable-execute-command:
     description: 'The URI of the container image to insert into the ECS task definition'
     required: true
+    default: false
   group:
     description: 'The URI of the container image to insert into the ECS task definition'
     required: false
@@ -49,6 +50,7 @@ inputs:
   platform-version:
     description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
     required: false
+    default: 'LATEST'
   tags:
     description: 'A list of tags for the container'
     required: false
