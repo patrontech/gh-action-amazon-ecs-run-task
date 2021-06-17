@@ -55,8 +55,8 @@ function run() {
         const enableExecuteCommand = core.getBooleanInput('enable-execute-command', { required: false });
         const group = core.getInput('group', { required: false });
         let launchType = null;
-        if (capacityProviderStrategy.length !== 0) {
-            launchType = core.getInput('launch-type', {required: false});
+        if (capacityProviderStrategy.length === 0) {
+            launchType = core.getInput('launch-type', {required: true});
         }
         const networkConfiguration = JSON.parse(core.getInput('network-configuration', { required: false }));
         const overrides = JSON.parse(core.getInput('overrides', { required: false }));
