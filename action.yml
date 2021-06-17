@@ -22,6 +22,7 @@ inputs:
   enable-ecs-managed-tags:
     description: 'The URI of the container image to insert into the ECS task definition'
     required: true
+    default: '[]'
   enable-execute-command:
     description: 'The URI of the container image to insert into the ECS task definition'
     required: true
