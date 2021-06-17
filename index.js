@@ -76,7 +76,7 @@ async function run() {
             tags: this.tags,
             taskDefinition: this.taskDefinition
         };
-        const result = runECSTask(client,params)
+        const result = await runECSTask(client,params)
     }
     catch (error) {
         core.setFailed(error.message);
