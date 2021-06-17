@@ -1,0 +1,51 @@
+name: 'Amazon ECS "Run Task" Action for GitHub Actions'
+description: 'Runs a single ECS task from a base task definition with overrides'
+branding:
+  icon: 'cloud'
+  color: 'orange'
+inputs:
+  task-definition:
+    description: 'The family and revision (family:revision ) or full ARN of the task definition to run. If a revision is not specified, the latest ACTIVE revision is used.'
+    required: true
+  capacity-provider-strategy:
+    description: 'The name of the container defined in the containerDefinitions section of the ECS task definition'
+    required: true
+  cluster:
+    description: 'The URI of the container image to insert into the ECS task definition'
+    required: true
+  count:
+    description: 'The URI of the container image to insert into the ECS task definition'
+    required: true
+  enable-ecs-managed-tags:
+    description: 'The URI of the container image to insert into the ECS task definition'
+    required: true
+  enable-execute-command:
+    description: 'The URI of the container image to insert into the ECS task definition'
+    required: true
+  group:
+    description: 'The URI of the container image to insert into the ECS task definition'
+    required: true
+  launch-type:
+    description: 'The infrastructure on which to run your standalone task. For more information, see Amazon ECS launch types in the Amazon Elastic Container Service Developer Guide '
+    required: true
+  network-configuration:
+    description: 'The network configuration for the task. This parameter is required for task definitions that use the awsvpc network mode to receive their own elastic network interface, and it is not supported for other network modes'
+    required: false
+  overides:
+    description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
+    required: false
+  placement-constraints:
+    description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
+    required: false
+  placement-strategy:
+    description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
+    required: false
+  platform-version:
+    description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
+    required: false
+outputs:
+  task-definition:
+    description: 'The path to the rendered task definition file'
+runs:
+  using: 'node12'
+  main: 'index.js'
