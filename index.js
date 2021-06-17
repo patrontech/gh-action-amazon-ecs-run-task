@@ -54,10 +54,9 @@ function run() {
         const enableECSManagedTags = core.getBooleanInput('enable-ecs-managed-tags', { required: false });
         const enableExecuteCommand = core.getBooleanInput('enable-execute-command', { required: false });
         const group = core.getInput('group', { required: false });
-        if (capacityProviderStrategy.length !== 0){
-            const launchType = core.getInput('launch-type', { required: false });
-        } else{
-            const launchType = null;
+        let launchType = null;
+        if (capacityProviderStrategy.length !== 0) {
+            launchType = core.getInput('launch-type', {required: false});
         }
         const networkConfiguration = JSON.parse(core.getInput('network-configuration', { required: false }));
         const overrides = JSON.parse(core.getInput('overrides', { required: false }));
