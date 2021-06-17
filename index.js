@@ -7,9 +7,15 @@ async function runECSTask(client, params) {
     console.log(JSON.stringify(params));
     const command = new RunTaskCommand(params);
 //    core.info(`Deployment started. Watch this deployment's progress in the Amazon ECS console: https://console.aws.amazon.com/ecs/home?region=${aws.config.region}#/clusters/${clusterName}/services/${service}/events`);
-    const response = await client.send(command);
-    console.log((response))
-    return response;
+    try{
+        const response = await client.send(command);
+        console.log((response))
+        return response;
+    }
+    catch (error) {
+        console.log(error.toString())
+        core.setFailed(error.message);
+    }
 /***
     // Wait for service stability
     if (waitForService && waitForService.toLowerCase() === 'true') {
