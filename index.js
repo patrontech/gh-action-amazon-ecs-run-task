@@ -76,6 +76,7 @@ async function run() {
             tags: this.tags,
             taskDefinition: this.taskDefinition
         };
+        await console.log(JSON.stringify(params));
         const result = await runECSTask(client,params)
     }
     catch (error) {
