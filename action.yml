@@ -22,7 +22,7 @@ inputs:
   enable-ecs-managed-tags:
     description: 'The URI of the container image to insert into the ECS task definition'
     required: true
-    default: '[]'
+    default: 'false'
   enable-execute-command:
     description: 'The URI of the container image to insert into the ECS task definition'
     required: true
@@ -49,6 +49,10 @@ inputs:
   platform-version:
     description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
     required: false
+  tags:
+    description: 'A list of tags for the container'
+    required: false
+    default: '[]'
 outputs:
   task-definition:
     description: 'The path to the rendered task definition file'
