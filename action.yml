@@ -40,9 +40,11 @@ inputs:
   placement-constraints:
     description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
     required: false
+    default: '[]'
   placement-strategy:
     description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
     required: false
+    default: '[]'
   platform-version:
     description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
     required: false

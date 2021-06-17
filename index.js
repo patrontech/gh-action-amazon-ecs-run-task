@@ -58,13 +58,13 @@ async function run() {
         const launchType = core.getInput('launch-type', { required: false });
         const networkConfiguration = JSON.parse(core.getInput('network-configuration', { required: false }));
         const overrides = JSON.parse(core.getInput('overrides', { required: false }));
-        const placementConstraints = core.getInput('placement-constraints', { required: false }) === '' ? core.getInput('placement-constraints', { required: false }) : []
-        const placementStrategy = core.getInput('placement-strategy', { required: false }) === '' ? core.getInput('placement-strategy', { required: false }) : []
+        const placementConstraints = JSON.parse(core.getInput('placement-constraints', { required: false }));
+        const placementStrategy = JSON.parse(core.getInput('placement-strategy', { required: false }));
         const placementVersion = core.getInput('placement-version', { required: false });
         const propagateTags = core.getInput('propagate-tags', { required: false });
         const referenceId = core.getInput('reference-id', { required: false });
         const startedBy = core.getInput('started-by', { required: false });
-        const tags = core.getInput('tags', { required: false }) === '' ? core.getInput('tags', { required: false }) : []
+        const tags = JSON.parse(core.getInput('tags', { required: false }));
         const platformVersion = core.getInput('platform-version', { required: false });
         const taskDefinition = core.getInput('task-definition', { required: true });
         const params = {
