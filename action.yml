@@ -32,7 +32,7 @@ inputs:
     required: false
   launch-type:
     description: 'The infrastructure on which to run your standalone task. For more information, see Amazon ECS launch types in the Amazon Elastic Container Service Developer Guide '
-    required: true
+    required: false
   network-configuration:
     description: 'The network configuration for the task. This parameter is required for task definitions that use the awsvpc network mode to receive their own elastic network interface, and it is not supported for other network modes'
     required: false

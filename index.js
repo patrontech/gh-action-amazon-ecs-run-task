@@ -54,7 +54,11 @@ function run() {
         const enableECSManagedTags = core.getBooleanInput('enable-ecs-managed-tags', { required: false });
         const enableExecuteCommand = core.getBooleanInput('enable-execute-command', { required: false });
         const group = core.getInput('group', { required: false });
-        const launchType = core.getInput('launch-type', { required: false });
+        if (capacityProviderStrategy.length !== 0){
+            const launchType = core.getInput('launch-type', { required: false });
+        } else{
+            const launchType = null;
+        }
         const networkConfiguration = JSON.parse(core.getInput('network-configuration', { required: false }));
         const overrides = JSON.parse(core.getInput('overrides', { required: false }));
         const placementConstraints = JSON.parse(core.getInput('placement-constraints', { required: false }));
