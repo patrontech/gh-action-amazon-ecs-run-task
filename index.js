@@ -58,25 +58,25 @@ async function run() {
         const tags = core.getInput('tags', { required: false });
         const taskDefinition = core.getInput('task-definition', { required: true });
         const params = {
-            capacityProviderStrategy: this.capacityProviderStrategy, // The name of the bucket. For example, 'sample_bucket_101'.
-            cluster: this.cluster, // The name of the object. For example, 'sample_upload.txt'.
-            count: this.count, // The content of the object. For example, 'Hello world!".
-            enableECSManagedTags: this.enableECSManagedTags,
-            enableExecuteCommand: this.enableExecuteCommand,
-            group: this.group,
-            launchType: this.launchType,
-            networkConfiguration: this.networkConfiguration,
-            overrides: this.overrides,
-            placementConstraints: this.placementConstraints,
-            placementStrategy: this.placementStrategy,
-            platformVersion : this.platformVersion,
-            propagateTags: this.propagateTags,
-            referenceId: this.referenceId,
-            startedBy: this.startedBy,
-            tags: this.tags,
-            taskDefinition: this.taskDefinition
+            capacityProviderStrategy: capacityProviderStrategy, // The name of the bucket. For example, 'sample_bucket_101'.
+            cluster: cluster, // The name of the object. For example, 'sample_upload.txt'.
+            count: count, // The content of the object. For example, 'Hello world!".
+            enableECSManagedTags: enableECSManagedTags,
+            enableExecuteCommand: enableExecuteCommand,
+            group: group,
+            launchType: launchType,
+            networkConfiguration: networkConfiguration,
+            overrides: overrides,
+            placementConstraints: placementConstraints,
+            placementStrategy: placementStrategy,
+            platformVersion : platformVersion,
+            propagateTags: propagateTags,
+            referenceId: referenceId,
+            startedBy: startedBy,
+            tags: tags,
+            taskDefinition: taskDefinition
         };
-        await console.log(JSON.stringify(params));
+        console.log(JSON.stringify(params));
         const result = await runECSTask(client,params)
     }
     catch (error) {
