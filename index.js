@@ -17,9 +17,9 @@ async function runECSTask(client, params) {
         console.log(error.toString())
         core.setFailed(error.message);
     }
-/***
-    // Wait for service stability
-    if (waitForService && waitForService.toLowerCase() === 'true') {
+    /***
+     // Wait for service stability
+     if (waitForService && waitForService.toLowerCase() === 'true') {
         core.debug(`Waiting for the service to become stable. Will wait for ${waitForMinutes} minutes`);
         const maxAttempts = (waitForMinutes * 60) / WAIT_DEFAULT_DELAY_SEC;
         await ecs.waitFor('servicesStable', {
@@ -33,7 +33,7 @@ async function runECSTask(client, params) {
     } else {
         core.debug('Not waiting for the service to become stable');
     }
- ***/
+     ***/
 }
 
 
@@ -58,13 +58,13 @@ async function run() {
         const launchType = core.getInput('launch-type', { required: false });
         const networkConfiguration = JSON.parse(core.getInput('network-configuration', { required: false }));
         const overrides = JSON.parse(core.getInput('overrides', { required: false }));
-        const placementConstraints = core.getInput('placement-constraints', { required: false });
-        const placementStrategy = core.getInput('placement-strategy', { required: false });
+        const placementConstraints = core.getInput('placement-constraints', { required: false }) === '' ? core.getInput('placement-constraints', { required: false }) : []
+        const placementStrategy = core.getInput('placement-strategy', { required: false }) === '' ? core.getInput('placement-strategy', { required: false }) : []
         const placementVersion = core.getInput('placement-version', { required: false });
         const propagateTags = core.getInput('propagate-tags', { required: false });
         const referenceId = core.getInput('reference-id', { required: false });
         const startedBy = core.getInput('started-by', { required: false });
-        const tags = core.getInput('tags', { required: false });
+        const tags = core.getInput('tags', { required: false }) === '' ? core.getInput('tags', { required: false }) : []
         const platformVersion = core.getInput('platform-version', { required: false });
         const taskDefinition = core.getInput('task-definition', { required: true });
         const params = {
