@@ -34,7 +34,7 @@ inputs:
   network-configuration:
     description: 'The network configuration for the task. This parameter is required for task definitions that use the awsvpc network mode to receive their own elastic network interface, and it is not supported for other network modes'
     required: false
-  overides:
+  overrides:
     description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
     required: false
   placement-constraints:
