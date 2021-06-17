@@ -5,35 +5,17 @@ const { ECSClient, RunTaskCommand } = require('@aws-sdk/client-ecs');
 function runECSTask(client, params) {
     console.log('Creating ECS Task');
     console.log(JSON.stringify(params));
-//    core.info(`Deployment started. Watch this deployment's progress in the Amazon ECS console: https://console.aws.amazon.com/ecs/home?region=${aws.config.region}#/clusters/${clusterName}/services/${service}/events`);
-    try{
-        const command = new RunTaskCommand(params);
-        console.log((command))
-        const response = client.send(command);
-        console.log((response))
-        return response;
-    }
-    catch (error) {
-        console.log(error.toString())
-        core.setFailed(error.message);
-    }
-    /***
-     // Wait for service stability
-     if (waitForService && waitForService.toLowerCase() === 'true') {
-        core.debug(`Waiting for the service to become stable. Will wait for ${waitForMinutes} minutes`);
-        const maxAttempts = (waitForMinutes * 60) / WAIT_DEFAULT_DELAY_SEC;
-        await ecs.waitFor('servicesStable', {
-            services: [service],
-            cluster: clusterName,
-            $waiter: {
-                delay: WAIT_DEFAULT_DELAY_SEC,
-                maxAttempts: maxAttempts
-            }
-        }).promise();
-    } else {
-        core.debug('Not waiting for the service to become stable');
-    }
-     ***/
+    const command = new RunTaskCommand(params);
+    console.log((command))
+    const response = client.send(command,function(error, data) {
+        if (error) {
+            console.log(error); // an error occurred
+            console.log("Response data and headers: " + JSON.stringify(this.httpResponse));
+            core.setFailed(error.message);
+        } else {
+            console.log(data); // request succeeded
+        }
+    });
 }
 
 function run() {
