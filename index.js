@@ -2,14 +2,14 @@ const core = require('@actions/core');
 const { ECSClient, RunTaskCommand } = require('@aws-sdk/client-ecs');
 
 // Deploy to a service that uses the 'ECS' deployment controller
-async function runECSTask(client, params) {
+function runECSTask(client, params) {
     console.log('Creating ECS Task');
     console.log(JSON.stringify(params));
 //    core.info(`Deployment started. Watch this deployment's progress in the Amazon ECS console: https://console.aws.amazon.com/ecs/home?region=${aws.config.region}#/clusters/${clusterName}/services/${service}/events`);
     try{
         const command = new RunTaskCommand(params);
         console.log((command))
-        const response = await client.send(command);
+        const response = client.send(command);
         console.log((response))
         return response;
     }
@@ -36,8 +36,7 @@ async function runECSTask(client, params) {
      ***/
 }
 
-
-async function run() {
+function run() {
     try {
         const awsCredentials = JSON.parse(core.getInput('aws-credentials', { required: true }));
         const client = new ECSClient({
@@ -87,7 +86,7 @@ async function run() {
             taskDefinition: taskDefinition
         };
         console.log(JSON.stringify(params));
-        const result = await runECSTask(client,params)
+        const result = runECSTask(client,params)
     }
     catch (error) {
         core.setFailed(error.message);
