@@ -5,7 +5,7 @@ const { ECSClient, RunTaskCommand } = require('@aws-sdk/client-ecs');
 async function runECSTask(client, params) {
     core.debug('Creating ECS Task');
     const command = new RunTaskCommand(params);
-    core.info(`Deployment started. Watch this deployment's progress in the Amazon ECS console: https://console.aws.amazon.com/ecs/home?region=${aws.config.region}#/clusters/${clusterName}/services/${service}/events`);
+//    core.info(`Deployment started. Watch this deployment's progress in the Amazon ECS console: https://console.aws.amazon.com/ecs/home?region=${aws.config.region}#/clusters/${clusterName}/services/${service}/events`);
     const response = await client.send(command);
 /***
     // Wait for service stability
