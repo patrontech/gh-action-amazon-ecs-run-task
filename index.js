@@ -53,7 +53,10 @@ function run() {
         const count = parseInt(core.getInput('count', { required: false }));
         const enableECSManagedTags = core.getBooleanInput('enable-ecs-managed-tags', { required: false });
         const enableExecuteCommand = core.getBooleanInput('enable-execute-command', { required: false });
-        const group = core.getInput('group', { required: false });
+        let group = core.getInput('group', { required: false });
+        if (group === ''){
+            group = null;
+        }
         let launchType = null;
         if (capacityProviderStrategy.length === 0) {
             launchType = core.getInput('launch-type', {required: true});
@@ -78,7 +81,7 @@ function run() {
             count: count, // The content of the object. For example, 'Hello world!".
             enableECSManagedTags: enableECSManagedTags,
             enableExecuteCommand: enableExecuteCommand,
-            group: group,
+            ...!(group) && {group: group},
             ...!(launchType) && {launchType: launchType},
             networkConfiguration: networkConfiguration,
             overrides: overrides,
