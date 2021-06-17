@@ -29,7 +29,7 @@ async function runECSTask(client, params) {
 
 async function run() {
     try {
-        const awsCredentials = JSON.parse(core.getInput('awsCredentials', { required: true }));
+        const awsCredentials = JSON.parse(core.getInput('aws-credentials', { required: true }));
         const client = new ECSClient({
             customUserAgent: 'amazon-ecs-run-task-for-github-actions',
             region: awsCredentials.region,
