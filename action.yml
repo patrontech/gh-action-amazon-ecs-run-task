@@ -51,6 +51,10 @@ inputs:
     description: 'A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive.'
     required: false
     default: 'LATEST'
+  started-by:
+    description: 'An optional tag specified when a task is started. For example, if you automatically trigger a task to run a batch process job, you could apply a unique identifier for that job to your task with the startedBy parameter. You can then identify which tasks belong to that job by filtering the results of a ListTasks call with the startedBy value. Up to 36 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.'
+    required: false
+    default: 'github_actions'
   tags:
     description: 'A list of tags for the container'
     required: false
