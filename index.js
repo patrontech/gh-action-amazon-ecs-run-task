@@ -56,6 +56,9 @@ function run() {
         const startedBy = core.getInput('started-by', { required: false });
         const tags = JSON.parse(core.getInput('tags', { required: false }));
         const platformVersion = core.getInput('platform-version', { required: false });
+        if (platformVersion === ''){
+            platformVersion = null;
+        }       
         const taskDefinition = core.getInput('task-definition', { required: true });
         const params = {
             capacityProviderStrategy: capacityProviderStrategy, // The name of the bucket. For example, 'sample_bucket_101'.
