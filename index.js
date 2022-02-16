@@ -55,7 +55,7 @@ function run() {
         const referenceId = core.getInput('reference-id', { required: false });
         const startedBy = core.getInput('started-by', { required: false });
         const tags = JSON.parse(core.getInput('tags', { required: false }));
-        const platformVersion = core.getInput('platform-version', { required: false });
+        let platformVersion = core.getInput('platform-version', { required: false });
         if (platformVersion === ''){
             platformVersion = null;
         }       
